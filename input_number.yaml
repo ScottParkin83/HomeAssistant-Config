@@ -1,0 +1,44 @@
+  last_temp:
+    name: "Home Temp"
+    initial: 16
+    min: 1
+    max: 50
+    step: 0.5
+  room_brighness:
+    name: "Room Brightness"
+    initial: 255
+    min: 1
+    max: 255
+    step: 25
+  kidstvtimer:
+    name: "Kid Room Timer"
+    initial: 0.5
+    min: 0.5
+    max: 5
+    step: 0.5
+  liveingroomlighttriggerlevel:
+    name: "Living room light trigger level"
+    initial: 6
+    min: 0
+    max: 300
+    step: 1
+    mode: box
+  ledspeed:
+    name: Speed
+    initial: 0
+    min: 0
+    max: 255
+    step: 1
+  ledintensity:
+    name: LED Intensity
+    initial: 0
+    min: 0
+    max: 255
+    step: 1
+  kidsbedroomroomlighttriggerlevel:
+    name: "Living room light trigger level"
+    initial: 6
+    min: 0
+    max: 300
+    step: 1
+    mode: box

@@ -1,0 +1,93 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+frontend:
+  themes: !include_dir_merge_named themes
+# Text to speech
+tts:
+  - platform: google_translate
+  
+circadian_lighting:
+
+discovery:
+
+hue:
+  bridges:
+    - host: 192.168.1.14
+      allow_unreachable: true
+      allow_hue_groups: true
+
+recorder:
+  purge_keep_days: 30
+  db_url: mysql://homeass:F0rmated@192.168.1.250/HassIO?charset=utf8
+
+hive:
+  username: !secret hive_username
+  password: !secret hive_password
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+sensor: !include sensor.yaml
+switch: !include switch.yaml
+binary_sensor: !include binary_sensor.yaml
+timer: !include timer.yaml
+input_number: !include input_number.yaml
+input_boolean: !include input_boolean.yaml
+input_select: !include input_select.yaml
+input_datetime: !include input_date.yaml
+# customize: !include customize.yaml
+
+
+fan:
+  - platform: mqtt
+    name: "Living Room Fan"
+    command_topic: "cmnd/RoomFan/FanSpeed"
+    speed_command_topic: "cmnd/RoomFan/FanSpeed"    
+    state_topic: "stat/RoomFan/RESULT"
+    speed_state_topic: "stat/RoomFan/RESULT"
+    state_value_template:  "{% if value_json.FanSpeed == 0 -%}0{%- elif value_json.FanSpeed > 0 -%}4{%- endif %}"
+    speed_value_template: "{{ value_json.FanSpeed }}"
+    availability_topic: tele/RoomFan/LWT
+    payload_off: "0"
+    payload_on: "4"
+    payload_low_speed: "1"
+    payload_medium_speed: "2"
+    payload_high_speed: "3"
+    payload_available: Online
+    payload_not_available: Offline
+    speeds:
+      - 'off'
+      - low
+      - medium
+      - high
+climate:
+  - platform: generic_thermostat
+    name: RoomCooling
+    heater: input_boolean.fanpower
+    target_sensor: sensor.living_room_sensor_temperature
+    ac_mode: true
+    initial_hvac_mode: cool
+    away_temp: 30
+    
+light:
+  - platform: mqtt
+    name: "Room Led Strip 1"
+    state_topic: "room/ledstrip1/light/status"
+    command_topic: "room/ledstrip1/light/switch"
+    brightness_state_topic: "room/ledstrip1/brightness/status"
+    brightness_command_topic: "room/ledstrip1/brightness/set"
+    rgb_state_topic: "room/ledstrip1/rgb/status"
+    rgb_command_topic: "room/ledstrip1/rgb/set"
+    state_value_template: "{{ value_json.state }}"
+    brightness_value_template: "{{ value_json.brightness }}"
+    rgb_value_template: "{{ value_json.rgb | join(',') }}"
+    qos: 0
+    payload_on: true
+    payload_off: false
+    optimistic: false

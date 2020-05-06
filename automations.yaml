@@ -1,0 +1,41 @@
+- id: '1576024531587'
+  alias: Living Room Dashboard
+  description: ''
+  trigger:
+  - hours: ''
+    minutes: '5'
+    platform: time_pattern
+    seconds: ''
+  condition:
+  - condition: state
+    entity_id: media_player.living_room_display
+    state: idle
+  - condition: state
+    entity_id: media_player.living_room_display
+    state: 'off'
+  - condition: state
+    entity_id: media_player.living_room_display
+    state: paused
+  action:
+  - data:
+      entity_id: media_player.living_room_display
+      view_path: livingroomhub
+    service: cast.show_lovelace_view
+- id: '1580860632541'
+  alias: Kids Room Dashboard
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.living_room_display
+      view_path: '4'
+    service: cast.show_lovelace_view
+- id: '1580861507963'
+  alias: Close Dashboard
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - entity_id: media_player.living_room_display
+    service: media_player.turn_off

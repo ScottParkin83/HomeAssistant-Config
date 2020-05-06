@@ -1,0 +1,25 @@
+  kidsbedtime:
+    name: "Kids Bedtime"
+    initial: Off
+    icon: mdi:hotel
+  livingroomnightmode:
+    name: "Living Room Night Mode"
+    icon: mdi:weather-night
+  ledstrip:
+    name: "Led Strip"
+    initial: Off
+  fanpower:
+    name: "Room Fan power"
+    initial: Off
+  room_lights_motion:
+    name: "Living Room Lights Motion"
+    initial: On
+  living_room_ccupied:
+    name: "Living Room Occupied"
+    initial: On
+  house_occupied:
+    name: "House Occupied"
+    initial: On
+  kidsroom_occupied:
+    name: "Kids Room Occupied"
+    initial: Off

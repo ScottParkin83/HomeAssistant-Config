@@ -1,0 +1,31 @@
+  - platform: mqtt
+    name: "Kids TV power"
+    state_topic: "stat/sonoffKidsBedroom/POWER"
+    command_topic: "cmnd/sonoffKidsBedroom/POWER"
+    availability_topic: "tele/sonoffKidsBedroom/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true
+  - platform: mqtt
+    name: "DisplayCabinetRoom"
+    state_topic: "stat/DisplayCabinetRoom/POWER"
+    command_topic: "cmnd/DisplayCabinetRoom/POWER"
+    availability_topic: "tele/DisplayCabinetRoom/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true
+  - platform: circadian_lighting
+    min_brightness: 30
+    lights_rgb:
+      - light.hue_bloom_living_room
+      - light.hue_color_ceiling_fan
+      - light.hue_color_lamp_living_room
+      - light.hue_lightstrip_living_room
+      - light.desk_light_strip
+      

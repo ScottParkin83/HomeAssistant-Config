@@ -1,0 +1,12 @@
+'1587303512073':
+  alias: LivingRoom_LightTrigger_Up
+  sequence:
+  - data: {}
+    entity_id: input_number.liveingroomlighttriggerlevel
+    service: input_number.increment
+'1587303893998':
+  alias: LivingRoom_LightTrigger_Down
+  sequence:
+  - data: {}
+    entity_id: input_number.liveingroomlighttriggerlevel
+    service: input_number.decrement

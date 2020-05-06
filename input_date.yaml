@@ -1,0 +1,13 @@
+  home_timer:
+    name: Home Timer
+    has_date: false
+    has_time: true
+  livingroom_timer:
+    name: Living Room Timer
+    has_date: false
+    has_time: true
+  kidsbedroom_timer:
+    name: Kids Room Timer
+    has_date: false
+    has_time: true
+   

@@ -1,0 +1,7 @@
+  kidsbedroommovement:
+    duration: '00:10:00'
+  homemovement:
+    duration: '00:30:00'
+  livingroommovement:
+    duration: '00:30:00'
+

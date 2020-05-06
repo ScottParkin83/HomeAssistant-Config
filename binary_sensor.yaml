@@ -1,0 +1,8 @@
+  - platform: mqtt
+    state_topic: "cmnd/sonoffKidsBedroom/POWER2"
+    availability_topic: "tele/sonoffKidsBedroom/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    payload_on: "ON"
+    payload_off: "OFF"
+    name: "Kids Bedroom Pir"
